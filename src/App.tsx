@@ -6,6 +6,7 @@ import { ScoreCard } from './components/ScoreCard';
 import { LensIcon, LockIcon, TrashIcon, UploadIcon } from './components/icons';
 import { EXAMPLES } from './data/examples';
 import { lint } from './linter/engine';
+import { extractDocumentText } from './utils/upload';
 import { plural } from './utils/plural';
 
 type Tab = 'issues' | 'markup' | 'report';
@@ -19,6 +20,8 @@ const TABS: Array<{ key: Tab; label: string }> = [
 function App() {
   const [text, setText] = useState(EXAMPLES[0].text);
   const [tab, setTab] = useState<Tab>('issues');
+  const [isParsing, setIsParsing] = useState(false);
+  const [uploadError, setUploadError] = useState<string | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const deferredText = useDeferredValue(text);
@@ -30,10 +33,22 @@ function App() {
   const charsLabel = `${text.length} ${plural(text.length, 'символ', 'символа', 'символов')}`;
 
   const handleFile = async (file?: File) => {
-    if (!file) return;
-    const content = await file.text();
-    setText(content);
-    setTab('issues');
+    if (!file || isParsing) return;
+
+    setUploadError(null);
+    setIsParsing(true);
+
+    try {
+      const content = await extractDocumentText(file);
+      setText(content);
+      setTab('issues');
+    } catch (error) {
+      setUploadError(
+        error instanceof Error ? error.message : 'Не удалось прочитать файл.',
+      );
+    } finally {
+      setIsParsing(false);
+    }
   };
 
   return (
@@ -81,10 +96,12 @@ function App() {
                   key={example.id}
                   type="button"
                   title={example.hint}
+                  disabled={isParsing}
                   className={`example-chip ${text === example.text ? 'is-active' : ''}`}
                   onClick={() => {
                     setText(example.text);
                     setTab('issues');
+                    setUploadError(null);
                   }}
                 >
                   <span className="chip-index">{String(index + 1).padStart(2, '0')}</span>
@@ -104,26 +121,45 @@ function App() {
           >
             <textarea
               value={text}
-              onChange={(event) => setText(event.target.value)}
-              placeholder="Вставьте ТЗ, user stories или критерии приёмки…"
+              onChange={(event) => {
+                setText(event.target.value);
+                setUploadError(null);
+              }}
+              readOnly={isParsing}
+              placeholder="Вставьте ТЗ или загрузите документ…"
               spellCheck={false}
               aria-label="Текст требований"
             />
           </div>
+
+          {uploadError && (
+            <div className="editor-alert" role="alert">
+              <span>{uploadError}</span>
+              <button
+                type="button"
+                className="editor-alert-close"
+                aria-label="Закрыть сообщение"
+                onClick={() => setUploadError(null)}
+              >
+                ×
+              </button>
+            </div>
+          )}
 
           <div className="editor-footer">
             <button
               type="button"
               className="ghost-button"
               onClick={() => fileInputRef.current?.click()}
+              disabled={isParsing}
             >
               <UploadIcon />
-              Загрузить файл
+              {isParsing ? 'Читаю файл…' : 'Загрузить файл'}
             </button>
             <input
               ref={fileInputRef}
               type="file"
-              accept=".txt,.md,text/plain,text/markdown"
+              accept=".txt,.md,.docx,.pdf,.xls,.xlsx,text/plain,text/markdown,application/pdf,application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
               hidden
               onChange={(event) => {
                 void handleFile(event.target.files?.[0]);
@@ -133,13 +169,16 @@ function App() {
             <button
               type="button"
               className="ghost-button"
-              onClick={() => setText('')}
-              disabled={isEmpty}
+              onClick={() => {
+                setText('');
+                setUploadError(null);
+              }}
+              disabled={isEmpty || isParsing}
             >
               <TrashIcon />
               Очистить
             </button>
-            <span className="footer-note">Перетащите .md или .txt в поле</span>
+            <span className="footer-note">Word, PDF, Excel, .md или .txt</span>
           </div>
         </section>
 

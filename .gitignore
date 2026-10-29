@@ -12,6 +12,21 @@ dist
 dist-ssr
 *.local
 
+# Local secrets and keys
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+
+# Local tooling and generated artifacts
+.qoder/
+.agents/
+vibe_images/
+Thumbs.db
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

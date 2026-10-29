@@ -349,6 +349,12 @@ button {
   color: var(--pink);
 }
 
+.example-chip:disabled {
+  opacity: 0.5;
+  cursor: default;
+  transform: none;
+}
+
 /* ---------- Editor ---------- */
 
 .editor-panel .editor-body {
@@ -373,6 +379,35 @@ button {
 
 .editor-panel .editor-body:focus-within {
   box-shadow: inset 0 0 0 2px rgba(242, 55, 161, 0.45);
+}
+
+.editor-alert {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 9px 16px;
+  border-top: 1.5px solid var(--pink);
+  background: var(--pink-soft);
+  color: var(--ink);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  line-height: 1.5;
+}
+
+.editor-alert-close {
+  flex: 0 0 auto;
+  padding: 0 2px;
+  border: 0;
+  background: transparent;
+  color: var(--ink);
+  font-size: 16px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.editor-alert-close:hover {
+  color: var(--pink-deep);
 }
 
 .editor-panel textarea {
@@ -629,6 +664,11 @@ button {
 
   .editor-footer {
     padding: 10px 12px;
+  }
+
+  .editor-alert {
+    padding: 9px 12px;
+    font-size: 9.5px;
   }
 
   .footer-note {

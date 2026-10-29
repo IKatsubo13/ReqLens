@@ -636,6 +636,54 @@
   gap: 8px;
 }
 
+.report-format {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--faint);
+  font-family: var(--font-mono);
+  font-size: 8.5px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.report-format select {
+  padding: 6px 8px;
+  border: 1.5px solid var(--blue);
+  border-radius: 4px;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  cursor: pointer;
+}
+
+.report-format select:focus-visible {
+  outline: 3px solid var(--blue);
+  outline-offset: 2px;
+}
+
+.report-error {
+  margin: 10px 0 0;
+  padding: 8px 10px;
+  border: 1.5px solid var(--pink);
+  border-radius: 3px;
+  background: var(--pink-soft);
+  color: var(--ink);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  line-height: 1.5;
+}
+
+.report-hint {
+  margin: 10px 0 0;
+  color: var(--faint);
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.02em;
+  line-height: 1.55;
+}
+
 .report-pre {
   margin: 12px 0 0;
   padding: 18px;
@@ -741,5 +789,14 @@
 
   .report-actions {
     width: 100%;
+  }
+
+  .report-format {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .report-format select {
+    flex: 1;
   }
 }
