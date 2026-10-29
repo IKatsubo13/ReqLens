@@ -1,0 +1,354 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="ReqLens — линтер требований: находит неоднозначные формулировки в ТЗ, проверяет структуру и собирает отчёт для тикета. 15 правил, локально в браузере."
+    />
+    <meta name="theme-color" content="#f6f1e6" />
+    <title>ReqLens — ТЗ без «быстро» и «удобно»</title>
+    <noscript>
+      <style>
+        [data-reveal] {
+          opacity: 1 !important;
+          transform: none !important;
+        }
+      </style>
+    </noscript>
+    <script>
+      document.documentElement.classList.add('js')
+    </script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Перейти к содержанию</a>
+
+    <header class="site-header">
+      <div class="shell header-inner">
+        <a class="brand" href="./" aria-label="ReqLens — на главную">
+          <svg class="brand-mark" viewBox="0 0 40 40" aria-hidden="true" focusable="false">
+            <circle cx="15" cy="15" r="10.5" fill="none" stroke="#f237a1" stroke-width="3.2" />
+            <circle cx="18" cy="18" r="10.5" fill="none" stroke="#2c40a7" stroke-width="3.2" />
+            <path d="M25 25 34 34" stroke="#f237a1" stroke-width="3.6" stroke-linecap="round" />
+            <path d="M28 28 36 36" stroke="#2c40a7" stroke-width="3.6" stroke-linecap="round" />
+            <path d="M11 13h10M16 8v10" stroke="#2c40a7" stroke-width="2.2" stroke-linecap="round" />
+          </svg>
+          <span class="brand-name">ReqLens<span class="brand-dot">.</span></span>
+        </a>
+
+        <nav class="site-nav" aria-label="Разделы страницы">
+          <a href="#why">Проблема</a>
+          <a href="#how">Как работает</a>
+          <a href="#rules">Правила</a>
+        </nav>
+
+        <a class="btn btn-small" href="./app.html">Открыть линтер</a>
+      </div>
+    </header>
+
+    <main id="main">
+      <section class="hero">
+        <div class="shell hero-inner">
+          <div class="hero-copy">
+            <p class="kicker" data-reveal>
+              <span class="kicker-mark" aria-hidden="true"></span>
+              Линтер требований · для аналитиков
+            </p>
+
+            <h1 class="hero-title" data-reveal>
+              <span class="line">ТЗ без</span>
+              <span class="line"><span class="hl">«быстро»</span></span>
+              <span class="line">и <span class="ul">«удобно»</span>.</span>
+            </h1>
+
+            <p class="lede" data-reveal>
+              ReqLens находит неоднозначные формулировки в требованиях до того, как их
+              прочитает разработчик. 15 правил, оценка от 0 до 100 и готовый отчёт для
+              тикета — за пару секунд.
+            </p>
+
+            <div class="hero-actions" data-reveal>
+              <a class="btn" href="./app.html">Проверить своё ТЗ <span aria-hidden="true">→</span></a>
+              <a class="btn btn-secondary" href="#rules">Смотреть правила</a>
+            </div>
+
+            <ul class="hero-facts" data-reveal>
+              <li><strong>15</strong><span>правил</span></li>
+              <li><strong>0</strong><span>сетевых запросов</span></li>
+              <li><strong>1</strong><span>Markdown-отчёт</span></li>
+            </ul>
+          </div>
+
+          <div class="hero-art" data-reveal data-delay="1">
+            <span class="hero-halftone" aria-hidden="true"></span>
+            <span class="hero-ring" aria-hidden="true"></span>
+
+            <article class="report-card" aria-label="Пример разбора требований">
+              <header class="report-head">
+                <span>REQLENS / РАЗБОР</span>
+                <span>№ 001</span>
+              </header>
+
+              <div class="report-topline">
+                <p class="report-label">Фрагмент ТЗ · личный кабинет</p>
+                <span class="report-stamp" aria-hidden="true">
+                  27<small>/100</small>
+                  <em>критично</em>
+                </span>
+              </div>
+
+              <div class="report-lines">
+                <p>
+                  <b>US-1</b> Пользователь должен <mark>быстро</mark> войти в систему.
+                </p>
+                <p>
+                  <b>US-2</b> Интерфейс должен быть <mark>удобным</mark> и
+                  <mark>современным</mark>.
+                </p>
+                <p>
+                  <b>US-3</b> <mark class="mark-blue">При необходимости</mark> отправлять
+                  уведомления.
+                </p>
+              </div>
+
+              <p class="report-foot">8 требований · 19 замечаний · отчёт готов</p>
+            </article>
+
+            <span class="sticker sticker-metric" aria-hidden="true">p95 &lt; 300 мс</span>
+            <span class="sticker sticker-local" aria-hidden="true">локально</span>
+            <span class="reg-mark reg-mark-hero" aria-hidden="true"></span>
+          </div>
+        </div>
+
+        <div class="ticker" aria-hidden="true">
+          <div class="ticker-track">
+            <span class="ticker-group">
+              быстро <i>✳</i> удобно <i>✳</i> надёжно <i>✳</i> при необходимости <i>✳</i>
+              максимально оперативно <i>✳</i> без ошибок <i>✳</i> и т.д. <i>✳</i>
+            </span>
+            <span class="ticker-group">
+              быстро <i>✳</i> удобно <i>✳</i> надёжно <i>✳</i> при необходимости <i>✳</i>
+              максимально оперативно <i>✳</i> без ошибок <i>✳</i> и т.д. <i>✳</i>
+            </span>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-why" id="why">
+        <div class="shell">
+          <div class="section-head split" data-reveal>
+            <div>
+              <p class="kicker"><span class="kicker-num">01</span> Почему это больно</p>
+              <h2>Одно слово — и требование <span class="mark-pink">нельзя проверить</span>.</h2>
+            </div>
+            <p class="section-note">
+              «Быстро», «удобно» и «при необходимости» звучат как требования, но не задают
+              поведение. Разработчик трактует их по-своему, QA пишет тест по-своему —
+              расхождение всплывает на демо.
+            </p>
+          </div>
+
+          <div class="compare">
+            <article class="compare-card compare-before" data-reveal>
+              <header>
+                <span class="compare-tag">Было</span>
+                <span class="compare-status">непроверяемо</span>
+              </header>
+              <p>«Система должна работать <mark>быстро</mark> и <mark>без ошибок</mark>».</p>
+              <footer>Сколько это в миллисекундах и какие ошибки допустимы?</footer>
+            </article>
+
+            <span class="compare-arrow" aria-hidden="true">→</span>
+
+            <article class="compare-card compare-after" data-reveal data-delay="1">
+              <header>
+                <span class="compare-tag">Стало</span>
+                <span class="compare-status">тестируемо</span>
+              </header>
+              <p>
+                «p95 ответа API — не более 300 мс при 100 RPS. При сетевой ошибке — до 3
+                повторов с интервалом 10 секунд».
+              </p>
+              <footer>Есть число, условие и сценарий проверки.</footer>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-how" id="how">
+        <div class="shell">
+          <div class="section-head split" data-reveal>
+            <div>
+              <p class="kicker"><span class="kicker-num">02</span> Как это работает</p>
+              <h2>Вставили. Проверили. Забрали отчёт.</h2>
+            </div>
+            <p class="section-note">
+              Проверка идёт прямо во время набора: без регистрации, без отправки документа
+              на сервер и без языковых моделей. Только правила и понятные рекомендации.
+            </p>
+          </div>
+
+          <div class="how-grid">
+            <ol class="steps" data-reveal>
+              <li>
+                <span class="step-num">01</span>
+                <div>
+                  <h3>Вставьте документ</h3>
+                  <p>ТЗ, user stories или критерии приёмки. Можно загрузить .md или .txt.</p>
+                </div>
+              </li>
+              <li>
+                <span class="step-num">02</span>
+                <div>
+                  <h3>Получите разбор</h3>
+                  <p>
+                    Линтер подсветит неоднозначности, нарушения структуры и дубли. Покажет
+                    оценку и чек-лист «что уже хорошо».
+                  </p>
+                </div>
+              </li>
+              <li>
+                <span class="step-num">03</span>
+                <div>
+                  <h3>Заберите отчёт</h3>
+                  <p>
+                    Markdown с замечаниями и рекомендациями — для тикета, Confluence или
+                    ревью с командой.
+                  </p>
+                </div>
+              </li>
+            </ol>
+
+            <figure class="shot" data-reveal data-delay="1">
+              <div class="shot-frame">
+                <img
+                  src="./src/promo/assets/app.png"
+                  width="1440"
+                  height="1000"
+                  loading="lazy"
+                  alt="Интерфейс ReqLens: слева документ с требованиями, справа оценка 27 из 100 и список замечаний"
+                />
+              </div>
+              <figcaption>
+                Настоящий разбор: 27/100, 19 замечаний и подсветка проблемных мест.
+              </figcaption>
+            </figure>
+          </div>
+
+          <div class="how-cta" data-reveal>
+            <a class="btn" href="./app.html">Открыть демо <span aria-hidden="true">→</span></a>
+            <span class="mono-note">Ничего не отправляется на сервер</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-rules" id="rules">
+        <span class="rules-watermark" aria-hidden="true">15</span>
+        <div class="shell">
+          <div class="section-head split" data-reveal>
+            <div>
+              <p class="kicker"><span class="kicker-num">03</span> Что внутри</p>
+              <h2>15 правил, которые ловят <span class="mark-pink">неочевидное</span>.</h2>
+            </div>
+            <p class="section-note">
+              Правила сгруппированы по смыслу: от слов-оценок до структуры документа. Каждое
+              замечание объясняет проблему и предлагает проверяемую формулировку.
+            </p>
+          </div>
+
+          <div class="rules-grid">
+            <article class="rule-card" data-reveal>
+              <span class="rule-index">01</span>
+              <h3>Неоднозначность</h3>
+              <p class="rule-examples">«быстро» · «удобно» · «несколько» · «и т.д.»</p>
+              <p>Скорость, качество и количество без измеримого критерия.</p>
+            </article>
+            <article class="rule-card" data-reveal data-delay="1">
+              <span class="rule-index">02</span>
+              <h3>Неопределённость</h3>
+              <p class="rule-examples">«при необходимости» · «по возможности» · TODO</p>
+              <p>Требование, которое можно выполнить, а можно и не выполнять.</p>
+            </article>
+            <article class="rule-card" data-reveal data-delay="2">
+              <span class="rule-index">03</span>
+              <h3>Атомарность</h3>
+              <p class="rule-examples">«и/или» · два действия в одном пункте</p>
+              <p>Требования, которые невозможно проверить и оценить по отдельности.</p>
+            </article>
+            <article class="rule-card" data-reveal>
+              <span class="rule-index">04</span>
+              <h3>Структура</h3>
+              <p class="rule-examples">критерии приёмки · роль · метрики</p>
+              <p>Проверка, что у требований есть критерии, роли и измеримые значения.</p>
+            </article>
+            <article class="rule-card" data-reveal data-delay="1">
+              <span class="rule-index">05</span>
+              <h3>Стиль и дубли</h3>
+              <p class="rule-examples">пассивный залог · повторные формулировки</p>
+              <p>Места, где текст скрывает исполнителя или дублирует соседний пункт.</p>
+            </article>
+            <article class="rule-card rule-card-accent" data-reveal data-delay="2">
+              <span class="rule-index">100</span>
+              <h3>Индекс качества</h3>
+              <p class="rule-examples">0–100 · чек-лист · отчёт</p>
+              <p>Оценка, которая помогает понять, готов ли документ к разработке.</p>
+            </article>
+          </div>
+
+          <p class="rules-foot" data-reveal>
+            Плюс проверка «Дано / Когда / Тогда», ролей, пассивного залога и открытых
+            перечней — всего 15 правил.
+          </p>
+        </div>
+      </section>
+
+      <section class="cta-section">
+        <div class="shell">
+          <div class="cta-panel" data-reveal>
+            <span class="cta-halftone" aria-hidden="true"></span>
+            <span class="cta-reg reg-mark" aria-hidden="true"></span>
+            <p class="kicker kicker-light">Проверка занимает секунды</p>
+            <h2>Проверьте ТЗ, пока его не проверил разработчик.</h2>
+            <div class="cta-actions">
+              <a class="btn btn-pink" href="./app.html">Открыть линтер <span aria-hidden="true">→</span></a>
+              <span class="cta-note">Бесплатно · без регистрации · данные остаются у вас</span>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="shell footer-inner">
+        <div class="footer-brand">
+          <a class="brand" href="./" aria-label="ReqLens — на главную">
+            <svg class="brand-mark" viewBox="0 0 40 40" aria-hidden="true" focusable="false">
+              <circle cx="15" cy="15" r="10.5" fill="none" stroke="#f237a1" stroke-width="3.2" />
+              <circle cx="18" cy="18" r="10.5" fill="none" stroke="#2c40a7" stroke-width="3.2" />
+              <path d="M25 25 34 34" stroke="#f237a1" stroke-width="3.6" stroke-linecap="round" />
+              <path d="M28 28 36 36" stroke="#2c40a7" stroke-width="3.6" stroke-linecap="round" />
+              <path d="M11 13h10M16 8v10" stroke="#2c40a7" stroke-width="2.2" stroke-linecap="round" />
+            </svg>
+            <span class="brand-name">ReqLens<span class="brand-dot">.</span></span>
+          </a>
+          <p>Линтер требований для аналитиков и команд. 15 правил, локальная проверка, отчёт в Markdown.</p>
+        </div>
+
+        <nav class="footer-links" aria-label="Ссылки">
+          <a href="#why">Проблема</a>
+          <a href="#how">Как работает</a>
+          <a href="#rules">Правила</a>
+          <a href="./app.html">Открыть линтер</a>
+        </nav>
+
+        <p class="footer-meta">
+          © <span id="year">2026</span> ReqLens · работает в браузере · без LLM
+        </p>
+      </div>
+    </footer>
+
+    <script type="module" src="./src/promo/promo.ts"></script>
+  </body>
+</html>
