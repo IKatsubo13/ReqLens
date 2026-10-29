@@ -1,7 +1,7 @@
-import '@fontsource/literata/cyrillic-600.css';
-import '@fontsource/literata/latin-600.css';
-import '@fontsource/literata/cyrillic-700.css';
-import '@fontsource/literata/latin-700.css';
+import '@fontsource/unbounded/cyrillic-600.css';
+import '@fontsource/unbounded/latin-600.css';
+import '@fontsource/unbounded/cyrillic-700.css';
+import '@fontsource/unbounded/latin-700.css';
 import '@fontsource/ibm-plex-sans/cyrillic-400.css';
 import '@fontsource/ibm-plex-sans/latin-400.css';
 import '@fontsource/ibm-plex-sans/cyrillic-500.css';
